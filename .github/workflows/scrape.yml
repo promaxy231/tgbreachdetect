@@ -7,9 +7,15 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # Give the GITHUB_TOKEN write permissions to push the state file
+    permissions:
+      contents: write
+      
     steps:
-      - uses: actions/checkout@v4 # This pulls channels.txt into the runner
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       
@@ -21,3 +27,11 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: python scrape.py
+      
+      - name: Commit and Push State Change
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add last_seen.json
+          git commit -m "bot: update last seen state [skip ci]" || echo "No changes to commit"
+          git push
