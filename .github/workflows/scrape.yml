@@ -1,34 +1,24 @@
-name: Threat Intel Scraper
-
+name: Telegram Web Scraper
 on:
   schedule:
-    - cron: '0 */12 * * *' # Twice a day
+    - cron: '*/30 * * * *' # Every 30 mins
   workflow_dispatch:
 
 jobs:
-  build:
+  scrape:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required for the bot to push changes
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-
+      
+      - name: Install Dependencies
+        run: pip install requests beautifulsoup4 groq firebase-admin
+      
       - name: Run Scraper
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          TARGET_CHANNELS: ${{ secrets.TARGET_CHANNELS }}
         run: python scrape.py
-
-      - name: Commit results
-        run: |
-          git config --global user.name "Scraper Bot"
-          git config --global user.email "bot@github.com"
-          git add data/*.txt
-          git commit -m "Update logs: $(date +'%Y-%m-%d %H:%M')" || echo "No new data"
-          git push
