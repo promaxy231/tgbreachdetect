@@ -1,14 +1,14 @@
 name: Telegram Web Scraper
 on:
   schedule:
-    - cron: '*/30 * * * *' # Every 30 mins
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # This pulls channels.txt into the runner
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
@@ -20,5 +20,4 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          TARGET_CHANNELS: ${{ secrets.TARGET_CHANNELS }}
         run: python scrape.py
