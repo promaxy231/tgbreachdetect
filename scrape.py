@@ -40,6 +40,54 @@ def process_with_groq(text):
     )
     return json.loads(completion.choices[0].message.content)
 
+def send_push_notifications(breach_id, target):
+    """Fetch all push tokens from Firestore and send notifications via Expo."""
+    try:
+        users = db.collection("users").stream()
+        push_tokens = []
+        
+        for user in users:
+            user_data = user.to_dict()
+            tokens = user_data.get("pushTokens", [])
+            push_tokens.extend(tokens)
+            
+        if not push_tokens:
+            log.info("No push tokens registered in database.")
+            return
+
+        log.info(f"Preparing push notifications for {len(push_tokens)} tokens...")
+        
+        # Build the payloads for Expo
+        payloads = []
+        for token in push_tokens:
+            payloads.append({
+                "to": token,
+                "sound": "default",
+                "title": "New Breach Detected!",
+                "body": f"A new security breach targeting {target or 'Unknown'} has been reported.",
+                "data": {"type": "breach", "id": breach_id}
+            })
+
+        # Expo API limits payloads to 100 messages per request, so we chunk them
+        chunk_size = 100
+        for i in range(0, len(payloads), chunk_size):
+            chunk = payloads[i:i + chunk_size]
+            headers = {
+                "Accept": "application/json",
+                "Accept-encoding": "gzip, deflate",
+                "Content-Type": "application/json"
+            }
+            resp = requests.post(
+                "https://exp.host/--/api/v2/push/send", 
+                json=chunk, 
+                headers=headers, 
+                timeout=10
+            )
+            log.info(f"Expo response status (chunk {i // chunk_size + 1}): {resp.status_code}")
+            
+    except Exception as e:
+        log.error(f"Failed to send push notifications: {e}")
+
 def main():
     # Load channels and the last seen state
     if not os.path.exists("channels.txt"):
@@ -70,13 +118,20 @@ def main():
             ai_result = process_with_groq(latest_text)
             
             if ai_result.get("usefulness") == 1:
-                db.collection("filtered_messages").add({
+                # Using document() then set() is safer and gives us the ID before insertion
+                doc_ref = db.collection("filtered_messages").document()
+                
+                doc_ref.set({
                     "date": datetime.now(timezone.utc).isoformat(),
                     "description": ai_result.get("description"),
                     "target": ai_result.get("target"),
                     "channel": chan
                 })
-                log.info(f"✅ Leak detected in {chan}")
+                
+                log.info(f"✅ Leak detected in {chan} with Firestore ID: {doc_ref.id}")
+
+                # Send the push notifications using the new ID
+                send_push_notifications(doc_ref.id, ai_result.get("target"))
 
             # Update the state object
             current_state[chan] = latest_text
