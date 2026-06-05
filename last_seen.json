@@ -1,3 +1,3 @@
 {
-  "CVEDetector": "{\"Source\": \"CVE FEED\",\"Title\": \"CVE-2026-50593 - Graphite Integer Underflow Out-of-Bounds Write\",\"Content\": \"CVE ID :CVE-2026-50593Published : June 5, 2026, 2:14 a.m. | 2\u00a0hours, 8\u00a0minutes agoDescription :Graphite before 1.3.15 has an integer underflow and resultant out-of-bounds write via Graphite actions, because slotat does not ensure that an offset is within the allowed slot-map range.Severity: 7.3 | HIGHVisit the link for more details, such as CVSS details, affected products, timeline, and more...\",\"Detection Date\": \"05 Jun 2026\",\"Type\": \"Vulnerability\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
+  "CVEDetector": "CVE Monitorpinned \u00ab\u203c\ufe0fNew sourced added\u203c\ufe0f- Detection of CVE PoC\u2019s published on GitHub\ud83c\udff4\u200d\u2620\ufe0fEducational Purpose only\u00bb"
 }
