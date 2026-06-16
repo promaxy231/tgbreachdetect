@@ -1,3 +1,3 @@
 {
-  "CVEDetector": "{\"Source\": \"CVE FEED\",\"Title\": \"CVE-2026-54296\",\"Content\": \"CVE ID :CVE-2026-54296Published :June 15, 2026, 6:31 p.m. | 1\u00a0hour, 44\u00a0minutes agoDescription :NoneSeverity:0.0 | NAVisit the link for more details, such as CVSS details, affected products, timeline, and more...\",\"Detection Date\": \"15 Jun 2026\",\"Type\": \"Vulnerability\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
+  "CVEDetector": "{\"Source\": \"CVE FEED\",\"Title\": \"CVE-2026-49764 - WordPress RegistrationMagic plugin <=6.0.8.6- broken authentication vulnerability\",\"Content\": \"CVE ID :CVE-2026-49764Published :June 15, 2026, 9:17 p.m. | 58\u00a0minutes agoDescription :Unauthenticated Broken Authentication in RegistrationMagic <=Severity:9.8 | CRITICALVisit the link for more details, such as CVSS details, affected products, timeline, and more...\",\"Detection Date\": \"16 Jun 2026\",\"Type\": \"Vulnerability\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
 }
