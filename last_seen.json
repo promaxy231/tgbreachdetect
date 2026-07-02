@@ -1,3 +1,3 @@
 {
-  "CVEDetector": "{\"Source\": \"CVE FEED\",\"Title\": \"CVE-2026-57750 - WordPress ez Form Calculator Premium plugin <=2.14.1.2- broken access control vulnerability\",\"Content\": \"CVE ID :CVE-2026-57750Published :July 2, 2026, 11:15 a.m. | 1\u00a0hour, 22\u00a0minutes agoDescription :Unauthenticated Broken Access Control in ez Form Calculator Premium <=Severity:5.3 | MEDIUMVisit the link for more details, such as CVSS details, affected products, timeline, and more...\",\"Detection Date\": \"02 Jul 2026\",\"Type\": \"Vulnerability\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
+  "CVEDetector": "{\"Source\": \"https://github.com/salihuahmad105-creator/Vulnerability-scanner\",\"Title\": \"salihuahmad105-creator/Vulnerability-scanner\",\"Content\": \"[GitHub]DESIGN AND IMPLEMENTATION OF A VULNERABILITY SCANNER FOR CVE-2026-45498 IN MICROSOFT DEFENDER\",\"Detection Date\": \"02 Jul 2026\",\"Type\": \"Exploit POC\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
 }
