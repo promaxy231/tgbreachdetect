@@ -1,3 +1,3 @@
 {
-  "CVEDetector": "CVE Monitorpinned \u00ab\ud83c\udf10Feed Paused - Updating Data Sources\ud83c\udf10ETA: 12h\u00bb"
+  "CVEDetector": "{\"Source\": \"https://github.com/CH0ico/CVE-2023-38146-Poc\",\"Title\": \"CVE-2023-38146 (2023-09-13) CH0ico/CVE-2023-38146-Poc\",\"Content\": \"Windows Themes Remote Code Execution Vulnerability[GitHub]Better POC\",\"Detection Date\": \"12 Jul 2026\",\"Type\": \"Exploit POC\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
 }
