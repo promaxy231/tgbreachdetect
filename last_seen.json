@@ -1,3 +1,3 @@
 {
-  "CVEDetector": "{\"Source\": \"CVE FEED\",\"Title\": \"CVE-2026-12702 - Octopus Deploy Unauthorized Deployment Trigger Vulnerability\",\"Content\": \"CVE ID :CVE-2026-12702Published :July 24, 2026, 9:16 a.m. | 1\u00a0hour, 13\u00a0minutes agoDescription :In affected versions of Octopus Deploy Insufficient checks on the project trigger actions allows an unauthorized user to trigger a deployment.Severity:5.1 | MEDIUMVisit the link for more details, such as CVSS details, affected products, timeline, and more...\",\"Detection Date\": \"24 Jul 2026\",\"Type\": \"Vulnerability\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
+  "CVEDetector": "{\"Source\": \"https://github.com/swornim619/CVE-2026-65650\",\"Title\": \"swornim619/CVE-2026-65650\",\"Content\": \"[GitHub]PoC for CVE-2026-65650 - Elgg avatar upload DoS\",\"Detection Date\": \"24 Jul 2026\",\"Type\": \"Exploit POC\"}\ud83d\udd39t.me/cvedetector\ud83d\udd39"
 }
